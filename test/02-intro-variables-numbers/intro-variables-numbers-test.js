@@ -25,7 +25,7 @@ const {
   lowerCaseName
 } = require("../../exercises/02-intro-variable-numbers/intro-variables-numbers");
 
-describe.only("Intro Variables And Numbers", () => {
+describe("Intro Variables And Numbers", () => {
   it("should return the students name", () => {
     const name = myName("Jamal");
     expect(name).equal("Jamal");

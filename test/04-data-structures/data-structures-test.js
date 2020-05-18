@@ -19,7 +19,7 @@ const {
   addFunctionsIntoArray
 } = require("../../exercises/04-data-structures/data-structures");
 
-describe("Data structures", () => {
+describe.only("Data structures", () => {
   it("should return an array with three values", () => {
     const newArr = createAnArray();
     expect(newArr.length).to.equal(4);

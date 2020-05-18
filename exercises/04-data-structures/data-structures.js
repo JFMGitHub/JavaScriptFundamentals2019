@@ -5,7 +5,11 @@
 
 function createAnArray() {
   let array = ["JavaScript"]; // Do not change this line
-  /* Add three more items to the array here */
+  array.push(
+    "C++",
+    "Python",
+    "Ruby"
+  ); /* Add three more items to the array here */
   return array;
 }
 
@@ -17,7 +21,7 @@ function createAnArray() {
 
 function accessingAnArray() {
   const cars = ["BMW", "Honda", "Civic"]; // Do not change this line
-  // Code here
+  return cars[0]; // Code here
 }
 
 /***
@@ -32,7 +36,14 @@ function accessingAnArray() {
  */
 
 function addFunctionsIntoArray() {
-  // Create and return an array here
+  [
+    function addArg(a, b) {
+      a + b;
+    },
+    function subArg(a, b) {
+      a - b;
+    },
+  ]; // Create and return an array here
 }
 
 /**
@@ -44,8 +55,16 @@ function addFunctionsIntoArray() {
  * highestNumber([-1, -5, -4]) // -1
  *
  **/
-function highestNumber(array) {}
-
+function highestNumber(array) {
+  let largestNum = array[0];
+  let i;
+  for (i = 0; i <= array.length; i++) {
+    if (array[i] > largestNum) {
+      array[i] = largestNum;
+    }
+    return largestNum;
+  }
+}
 /**
  * Combine an array by using the spread operator
  * @param  {array} array1
@@ -55,7 +74,11 @@ function highestNumber(array) {}
  * combineArray(['Japan','China','India'], ['USA','UK']) // ['Japan','China','India','USA','UK']
  **/
 
-function combineArray(array1, array2) {}
+function combineArray(array1, array2) {
+  combinedArray1 = [...array1, ...array2];
+
+  return combinedArray1;
+}
 
 /**
  * Given an array of objects, where each object has an ID,
@@ -93,7 +116,14 @@ function combineArray(array1, array2) {}
  * // Please note, the loop never iterates over the last item, because we found our object. There is no need to continue looping.
  */
 
-function findAndAbort(arr, id) {}
+function findAndAbort(arr, id) {
+  const i = 0;
+  for (i of arr) {
+    if (id === id) {
+      return Object.entries(arr[i]);
+    }
+  }
+}
 
 /**
  * A palindrome is a word, phrase, or sequence that reads the same backward as forward, e.g., madam or racecar.
@@ -104,7 +134,15 @@ function findAndAbort(arr, id) {}
  *
  */
 
-function isPalindrome(str) {}
+function isPalindrome(str) {
+  let lowCase = str.lowerCase;
+  let splitCase = lowCase.split();
+  let revCase = splitCase.reverse();
+  if (revCase === str) {
+    true;
+  }
+  false;
+}
 
 /***
  * Use sets to remove duplicate elements from an array
@@ -112,10 +150,11 @@ function isPalindrome(str) {}
  */
 
 function removeDuplicates() {
-  let numbers = [2, 3, 4, 4, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 5, 32, 3, 4, 5]; // You can change this line
+  let numbers = [2, 3, 4, 4, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 5, 32, 3, 4, 5];
+  let numSet = new Set(numbers); // You can change this line
 
   /** Return the an array of unique values */
-  return;
+  return numSet;
 }
 
 /**
@@ -127,10 +166,11 @@ function accessObject() {
   let clothes = {
     hat: "ballcap",
     shirt: "jersey",
-    shoes: "cleats"
+    shoes: "cleats",
   };
   // Only change code below this line
-  return;
+
+  return Object.values(clothes[0]);
 }
 
 /**
@@ -144,9 +184,11 @@ function createStudentObject() {
   let student = {
     firstName: "",
     lastName: "",
-    skills: []
+    skills: [],
   };
-  // Add code here
+  student.firstName = "John";
+  student.lastName = "Mellet";
+  student.skills = ["Running", "Reading", "Writing"]; // Add code here
   return student;
 }
 
@@ -157,7 +199,14 @@ function createStudentObject() {
  * @return {object}
  */
 
-function createDogObject() {}
+function createDogObject() {
+  const myDog = {
+    name: "Fido",
+    legs: "4",
+    tails: "1",
+    owners: ["Luanne", "Dave"],
+  };
+}
 
 /**
  *  Using Object.keys, return all the properties contained in the object.
@@ -172,9 +221,9 @@ function returnObjectProperties() {
     tail: 1,
     legs: 4,
     friends: ["Rusty", "Sparky"],
-    name: "Rocket"
+    name: "Rocket",
   };
-  // Add code here
+  return Object.keys(dog); // Add code here
   // hint you need to return an array
 }
 
@@ -185,8 +234,10 @@ function returnObjectProperties() {
  * @return {object} obj1 and obj2 combined
  */
 
-function combineObject(obj1, obj2) {}
-
+function combineObject(obj1, obj2) {
+  let x = { ...obj1, ...obj2 };
+  return x;
+}
 /**
  * Find a record with the matching id in a collection of records.
  * If the value is truthy, then swap out one of the records values with a new property.
@@ -224,28 +275,32 @@ function updateRecords(id, prop, value) {
     "2548": {
       album: "Slippery When Wet",
       artist: "Bon Jovi",
-      tracks: ["Let It Rock", "You Give Love a Bad Name"]
+      tracks: ["Let It Rock", "You Give Love a Bad Name"],
     },
     // id
     "2468": {
       album: "1999",
       artist: "Prince",
-      tracks: ["1999", "Little Red Corvette"]
+      tracks: ["1999", "Little Red Corvette"],
     },
     // id
     "1245": {
       artist: "Robert Palmer",
-      tracks: []
+      tracks: [],
     },
     // id
     "5439": {
-      album: "ABBA Gold"
-    }
+      album: "ABBA Gold",
+    },
   };
-  // Only change the code after this line
-  // Logic Here
+  //const = i
+  for (const i = 0; i <= collection.length; i++) {
+    if ((collection.id[i] = id)) {
+      prop[i] = value;
+    } // Only change the code after this line
+    // Logic Here
+  }
 }
-
 module.exports = {
   createAnArray,
   accessingAnArray,
@@ -260,5 +315,5 @@ module.exports = {
   removeDuplicates,
   updateRecords,
   findAndAbort,
-  addFunctionsIntoArray
+  addFunctionsIntoArray,
 };
