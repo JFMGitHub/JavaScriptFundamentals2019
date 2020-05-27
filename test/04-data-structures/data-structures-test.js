@@ -16,10 +16,10 @@ const {
   removeDuplicates,
   updateRecords,
   findAndAbort,
-  addFunctionsIntoArray
+  addFunctionsIntoArray,
 } = require("../../exercises/04-data-structures/data-structures");
 
-describe.only("Data structures", () => {
+describe("Data structures", () => {
   it("should return an array with three values", () => {
     const newArr = createAnArray();
     expect(newArr.length).to.equal(4);
@@ -55,29 +55,29 @@ describe.only("Data structures", () => {
       {
         id: 10,
         firstName: "John",
-        lastName: "Smith"
+        lastName: "Smith",
       },
       {
         id: 20,
         firstName: "Cookie",
-        lastName: "Monster"
+        lastName: "Monster",
       },
       {
         id: 30,
         firstName: "Jane",
-        lastName: "Doe"
+        lastName: "Doe",
       },
       {
         id: 40,
         firstName: "Tom",
-        lastName: "Hardy"
-      }
+        lastName: "Hardy",
+      },
     ];
 
     expect(findAndAbort(people, 20)).to.deep.equal({
       id: 20,
       firstName: "Cookie",
-      lastName: "Monster"
+      lastName: "Monster",
     });
     expect(findAndAbort.toString().includes("break")).to.equal(true);
   });
@@ -112,7 +112,7 @@ describe.only("Data structures", () => {
       32,
       3,
       4,
-      5
+      5,
     ]);
     expect(unique).to.be.equalTo([2, 3, 4, 5, 6, 7, 32]);
   });
@@ -144,15 +144,15 @@ describe.only("Data structures", () => {
 
   it("it should combine two objects and return a single object", () => {
     const obj1 = {
-      firstName: "Clark"
+      firstName: "Clark",
     };
     const obj2 = {
-      lastName: "Kent"
+      lastName: "Kent",
     };
     const combinedObj = combineObject(obj1, obj2);
     expect(combinedObj).to.deep.equal({
       firstName: "Clark",
-      lastName: "Kent"
+      lastName: "Kent",
     });
   });
 

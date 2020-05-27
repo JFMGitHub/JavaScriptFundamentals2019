@@ -142,10 +142,7 @@ function isPalindrome(str) {
   return reverse === str;
 
   // Method 2
-  const reverse = str
-    .split("")
-    .reverse()
-    .join("");
+  const reverse = str.split("").reverse().join("");
   return reverse === str;
 }
 
@@ -177,7 +174,7 @@ function removeDuplicates(numbers) {
     32,
     3,
     4,
-    5
+    5,
   ]);
   return [...mySet];
 }
@@ -191,7 +188,7 @@ function accessObject() {
   let clothes = {
     hat: "ballcap",
     shirt: "jersey",
-    shoes: "cleats"
+    shoes: "cleats",
   };
   // Only change code below this line
   return clothes.hat;
@@ -208,7 +205,7 @@ function createStudentObject() {
   let student = {
     firstName: "",
     lastName: "",
-    skills: []
+    skills: [],
   };
   // Add code here
   student.firstName = "Stacy";
@@ -229,7 +226,7 @@ function createDogObject() {
     name: "Sparky",
     legs: 8,
     tails: 2,
-    owners: ["Tim Burton"]
+    owners: ["Tim Burton"],
   };
 }
 
@@ -246,7 +243,7 @@ function returnObjectProperties() {
     tail: 1,
     legs: 4,
     friends: ["Rusty", "Sparky"],
-    name: "Rocket"
+    name: "Rocket",
   };
   // Add code here
   // hint you need to return an array
@@ -292,23 +289,23 @@ function updateRecords(id, property, value) {
     "2548": {
       album: "Slippery When Wet",
       artist: "Bon Jovi",
-      tracks: ["Let It Rock", "You Give Love a Bad Name"]
+      tracks: ["Let It Rock", "You Give Love a Bad Name"],
     },
     // id
     "2468": {
       album: "1999",
       artist: "Prince",
-      tracks: ["1999", "Little Red Corvette"]
+      tracks: ["1999", "Little Red Corvette"],
     },
     // id
     "1245": {
       artist: "Robert Palmer",
-      tracks: []
+      tracks: [],
     },
     // id
     "5439": {
-      album: "ABBA Gold"
-    }
+      album: "ABBA Gold",
+    },
   };
   // Only change the code after this line
   // Logic Here
@@ -334,5 +331,5 @@ module.exports = {
   removeDuplicates,
   updateRecords,
   findAndAbort,
-  addFunctionsIntoArray
+  addFunctionsIntoArray,
 };

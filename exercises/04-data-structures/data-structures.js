@@ -36,14 +36,16 @@ function accessingAnArray() {
  */
 
 function addFunctionsIntoArray() {
-  [
-    function addArg(a, b) {
-      a + b;
+  let twoFunc = [
+    function addArg(arg1, arg2) {
+      return arg1 + arg2;
     },
-    function subArg(a, b) {
-      a - b;
+    function subArg(arg1, arg2) {
+      return arg1 - arg2;
     },
-  ]; // Create and return an array here
+  ];
+  console.log(twoFunc);
+  return twoFunc; // Create and return an array here
 }
 
 /**
@@ -57,14 +59,14 @@ function addFunctionsIntoArray() {
  **/
 function highestNumber(array) {
   let largestNum = array[0];
-  let i;
-  for (i = 0; i <= array.length; i++) {
+  for (i = 0; i < array.length; i++) {
     if (array[i] > largestNum) {
-      array[i] = largestNum;
+      largestNum = array[i];
     }
-    return largestNum;
   }
+  return largestNum;
 }
+
 /**
  * Combine an array by using the spread operator
  * @param  {array} array1
@@ -117,12 +119,14 @@ function combineArray(array1, array2) {
  */
 
 function findAndAbort(arr, id) {
-  const i = 0;
-  for (i of arr) {
-    if (id === id) {
-      return Object.entries(arr[i]);
+  let correct;
+  for (let i of arr) {
+    if (i.id === id) {
+      correct = i;
+      break;
     }
   }
+  return correct; //I don't understand this one.
 }
 
 /**
@@ -135,13 +139,12 @@ function findAndAbort(arr, id) {
  */
 
 function isPalindrome(str) {
-  let lowCase = str.lowerCase;
-  let splitCase = lowCase.split();
+  let splitCase = str.split("");
   let revCase = splitCase.reverse();
-  if (revCase === str) {
-    true;
-  }
-  false;
+  let joinCase = revCase.join("");
+  if (joinCase === str) {
+    return true;
+  } else return false;
 }
 
 /***
@@ -152,9 +155,10 @@ function isPalindrome(str) {
 function removeDuplicates() {
   let numbers = [2, 3, 4, 4, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 5, 32, 3, 4, 5];
   let numSet = new Set(numbers); // You can change this line
-
+  console.log(numSet);
+  let newArr = [...numSet];
   /** Return the an array of unique values */
-  return numSet;
+  return newArr;
 }
 
 /**
@@ -170,7 +174,7 @@ function accessObject() {
   };
   // Only change code below this line
 
-  return Object.values(clothes[0]);
+  return clothes.hat;
 }
 
 /**
@@ -206,6 +210,7 @@ function createDogObject() {
     tails: "1",
     owners: ["Luanne", "Dave"],
   };
+  return myDog;
 }
 
 /**
@@ -294,12 +299,25 @@ function updateRecords(id, prop, value) {
     },
   };
   //const = i
-  for (const i = 0; i <= collection.length; i++) {
-    if ((collection.id[i] = id)) {
-      prop[i] = value;
-    } // Only change the code after this line
-    // Logic Here
-  }
+  if (value) {
+    if (prop === "tracks") {
+      if (collection[id][prop] && value) {
+        collection[id][prop].push(value);
+      } else {
+        collection[id][prop] = [];
+        collection[id][prop].push(value);
+      }
+    } else {
+      collection[id][prop] = value;
+    }
+  } else {
+    console.log("test");
+
+    collection[id][prop] = undefined;
+  } // Only change the code after this line
+  console.log(collection); // Logic Here
+
+  return collection;
 }
 module.exports = {
   createAnArray,
