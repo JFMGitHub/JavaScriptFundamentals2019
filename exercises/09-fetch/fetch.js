@@ -15,4 +15,21 @@
  * Please use Fetch in this Example
  *
  */
-
+// fetch("https://dog.ceo/api/breeds/image/random", {
+//    method: "POST",
+//    headers: {
+//     "Content-Type": ""
+//    },
+//    body: JSON.stringify({
+//        id: "dog image"
+//    })
+//  })
+//  .then(response => response.json())
+//  .then(data => console.log(data))
+const button = document.querySelector("#button");
+button.addEventListener("click", () =>
+  fetch("https://dog.ceo/api/breeds/image/random")
+    .then((response) => response.json())
+    .then((data) => (document.getElementById("image").src = data.message))
+    .catch((err) => console.log(err))
+);

@@ -5,7 +5,7 @@ chai.use(require("chai-arrays"));
 const {
   isEvenOrOdd,
   functionMaker,
-  confirmEnding
+  confirmEnding,
 } = require("../../challenges/9-30-challenges");
 
 describe("9-30-challenges", () => {

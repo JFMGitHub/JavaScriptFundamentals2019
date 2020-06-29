@@ -7,7 +7,12 @@
  *
  */
 
-function objectMaker() {}
+function objectMaker() {
+  const obj = {
+    name: "matina",
+  };
+  return obj;
+}
 
 /**
  *  As a programmer, I would like to be able to call on a function that returns an object that will allow me to
@@ -37,8 +42,20 @@ function objectMaker() {}
 
 function groceryList() {
   let groceryItems = [];
-
-  return {};
+  const add = (groceryItems) => {
+    groceryItems.push(food);
+  };
+  const remove = (itemsToRemove) => {
+    groceryItems.splice((itemsToRemove - 1, 1));
+  };
+  const getList = () => {
+    return groceryItems;
+  };
+  return {
+    add,
+    remove,
+    getList,
+  };
 }
 
 /**
@@ -55,6 +72,7 @@ const calculator = () => {
    * Create a private variable called "sum"
    * @var {number}
    */
+  let sum = 0;
   /**
    * Return an object that has two methods:
    *
@@ -66,6 +84,16 @@ const calculator = () => {
    * that should return the value of "sum" above.
    * @returns {number} the value of sum
    */
+  const setter = (number) => {
+    sum += number;
+  };
+  const getter = () => {
+    return sum;
+  };
+  return {
+    setter,
+    getter,
+  };
 };
 
 /**
@@ -93,8 +121,26 @@ const calculator = () => {
  * guessRound2(1); // "No more guesses. The answer was 0"
  */
 
-const guessingGame = numberOfRounds => {};
-
+const guessingGame = (numberOfRounds) => {
+  let answer = Math.floor(Math.random() * 11);
+  let guesses = 0;
+  const guessRound = (x) => {
+    while (guesses !== numberOfRounds) {
+      guesses++;
+      if ((x = answer)) {
+        return "You got it!";
+      } else if (x > answer) {
+        return "You're too high!";
+      } else {
+        return "You're too low!";
+      }
+    }
+    if ((guesses = numberOfRounds)) {
+      return `No more guesses. The answer was ${answer}`;
+    }
+  };
+  return guessRound;
+};
 /** CLOSURES END */
 
 /** Currying Start */
@@ -116,7 +162,11 @@ const guessingGame = numberOfRounds => {};
  * @param {number} a
  * @param {number} b
  */
-const multiplier = (a, b) => {};
+const multiplier = (a, b) => {
+  return (b) => {
+    return a * b;
+  };
+};
 
 /** Currying End */
 
@@ -133,7 +183,9 @@ const multiplier = (a, b) => {};
  *  - Eddy
  * @param {string} name instuctor name
  */
-const printer = () => {};
+const printer = (name) => {
+  console.log(-+name);
+};
 
 /**
  * Loops through the array of strings
@@ -141,7 +193,12 @@ const printer = () => {};
  * @param {array}
  * @param {function} callback printer function
  */
-const printNames = () => {};
+const printNames = () => {
+  let i;
+  for (i = 0; i < array.length; i++) {
+    printer(i);
+  }
+};
 
 /*** callback ends */
 
@@ -155,7 +212,9 @@ const printNames = () => {};
  * @param {array} arr
  * @param {function} callback
  */
-const forEach = (arr, callback) => {};
+const forEach = (arr, callback) => {
+  arr.forEach((element) => console.log(element));
+};
 
 /**
  * Given an array of strings, remove all letters of each value except the first and last character in the strings
@@ -165,7 +224,13 @@ const forEach = (arr, callback) => {};
  *   showFirstAndLast(['colt','matt', 'tim', 'udemy']); // ["ct", "mt", "tm", "uy"]
  *   showFirstAndLast(['hi', 'goodbye', 'smile']) // ['hi', 'ge', 'se']
  */
-const showFirstAndLast = arr => {};
+const showFirstAndLast = (arr) => {
+  let newArr = [];
+  arr.forEach(function (item, index, array) {
+    newArr.push(item[0] + item[item.length - 1]);
+  });
+  return newArr;
+};
 
 /***ForEach ends */
 
@@ -176,14 +241,20 @@ const showFirstAndLast = arr => {};
  * @param {function} callback
  * @returns {array} new array
  */
-const map = (arr, callback) => {};
+const map = (arr, callback) => {
+  arr.map(function callback(x) {
+    x * 2;
+  });
+};
 
 /**
  * Multiplies each value in an array by two
  * @param {array} arr an array of numbers e.g. [1, 3, 5]
  * @returns {array} new array, with each value doubled e.g. [2, 5, 10]
  */
-const doubleValues = arr => {};
+const doubleValues = (arr) => {
+  arr.map((x) => x * 2);
+};
 
 /**
  * Given an array nested with objects
@@ -203,7 +274,11 @@ const doubleValues = arr => {};
  * ];
  * extractKey(arrayOfNames, 'name'); // ['Ellie', 'Tim', 'Matt', 'Colt']
  */
-const extractKey = (arr, key) => {};
+const extractKey = (arr, key) => {
+  let newArr = [];
+  newArr.push(arr.key);
+  return newArr;
+};
 
 /**
  * Build your own filter function
@@ -212,7 +287,9 @@ const extractKey = (arr, key) => {};
  * @param {function} callback
  * @returns {mixed} a array of values with the values with some of the values removed
  */
-const filter = (arr, callback) => {};
+const filter = (arr, callback) => {
+  const results = arr.filter((word) => word.length > 5);
+};
 
 /**
  * Delete the matching user from an array of user objects
@@ -233,7 +310,9 @@ const filter = (arr, callback) => {};
  * findUser(users, 1025);
  * // [{ id: 1024, username:"smile134", email: "smile134@example.com" }]
  */
-const deleteUser = (arr, id) => {};
+const deleteUser = (arr, id) => {
+  return arr.filter(id);
+};
 
 /**
  * Build your own find function
@@ -242,7 +321,10 @@ const deleteUser = (arr, id) => {};
  * @param {function} callback
  * @returns {mixed} a single value in the array
  */
-const find = (arr, callback) => {};
+const find = (arr, callback) => {
+  const found = arr.find((element) => element > 10);
+  callback(found);
+};
 
 /**
  * Find and return the matching user in an array of user objects
@@ -263,7 +345,9 @@ const find = (arr, callback) => {};
  * findUser(users, 1025);
  * // { id: 1025, username:"newyorkfarmer", email: "johndoe@example.com" }
  */
-const findUser = (arr, id) => {};
+const findUser = (arr, id) => {
+  return arr.find((element) => element === id);
+};
 
 /**
  * Given an array of numbers, return the sum
@@ -273,14 +357,21 @@ const findUser = (arr, id) => {};
  *  addItems([1,5,6]) // 12
  *  addItems([1,-2,-3]) // -4
  */
-const addItems = arr => {};
-
+const addItems = (arr) => {
+  arr.reduce((total, num) => {
+    return total + num;
+  }, 0);
+};
 /**
  * Create a function that flattens an array (that is, it should "unnest" a nested array).
  * @param {array} array e.g. `[[1, 3], [5, 10]]`
  * @returns {array} new, flattened array e.g. `[1, 3, 5, 10]`
  */
-const flattenArray = array => {};
+const flattenArray = (array) => {
+  array.reduce((total, amount) => {
+    return [...total, ...amount];
+  }, []);
+};
 
 /**
  * Create a function that tallies the number of each kind of "thing" within the array
@@ -290,7 +381,12 @@ const flattenArray = array => {};
  *   let fruits = ['Apple', 'Orange', 'Apple', 'Blueberry', 'Grape', 'Grape'];
  *   generateTally(generateTally); // {Apple: 2, Orange: 1, Blueberry: 1, Grape: 2}
  */
-const generateTally = array => {};
+const generateTally = (array) => {
+  array.reduce((acc, fruit) => {
+    acc[fruit] = acc[fruit] ? acc[fruit] + 1 : 1;
+    return acc;
+  }, {});
+};
 
 /**
  * Create a function, that when given an array of object literals, will index the object literals by a single column
@@ -314,7 +410,7 @@ const generateTally = array => {};
  *   456: {id, 456, name: 'Rachel', age: 35}
  * }
  */
-const arrayToObject = arr => {};
+const arrayToObject = (arr) => {};
 
 module.exports = {
   objectMaker,
@@ -336,5 +432,5 @@ module.exports = {
   flattenArray,
   arrayToObject,
   calculator,
-  guessingGame
+  guessingGame,
 };

@@ -22,7 +22,7 @@ const {
   flattenArray,
   arrayToObject,
   calculator,
-  guessingGame
+  guessingGame,
 } = require("../../exercises/06-A-Closer-Look-At-Functions/06-A-Closer-Look-At-Functions");
 
 describe("Functions", () => {
@@ -71,12 +71,14 @@ describe("Closures", () => {
     });
     it('the second method ("getter") should return the value of sum. ("sum" needs to be "falsy" at first for this to pass).', () => {
       const calcObj = calculator();
+      console.log(calcObj);
       const methods = Object.values(calcObj);
       const sum = methods[1]();
       expect(sum).to.not.be.ok;
     });
     it('the first method ("setter") should set the value of sum', () => {
       const calcObj = calculator();
+      console.log(calcObj);
       const methods = Object.values(calcObj);
       const [add, get] = methods;
 
@@ -98,7 +100,7 @@ describe("Closures", () => {
     });
   });
 
-  describe("guessingGame", () => {
+  describe.only("guessingGame", () => {
     it("should return a function", () => {
       const round = guessingGame(3);
       expect(round).to.be.a("function");
@@ -191,7 +193,7 @@ describe("map", () => {
     expect(suppliedArr).to.be.equalTo([1, 2, 3]);
   });
   it("tests doubledValues to see if the function returns an array that doubling every value in the array", () => {
-    const doubledValues = doubleValues([2, 3, 4], number => {
+    const doubledValues = doubleValues([2, 3, 4], (number) => {
       return number * 2;
     });
     expect(doubledValues).to.be.equalTo([4, 6, 8]);
@@ -222,31 +224,31 @@ describe("filter", () => {
       {
         id: 1024,
         username: "smile134",
-        email: "smile134@example.com"
+        email: "smile134@example.com",
       },
       {
         id: 1025,
         username: "newyorkfarmer",
-        email: "johndoe@example.com"
+        email: "johndoe@example.com",
       },
       {
         id: 1026,
         username: "redsocksfan#1",
-        email: "massusa@example.com"
-      }
+        email: "massusa@example.com",
+      },
     ];
     const user = deleteUser(users, 1025);
     expect(user).to.deep.equal([
       {
         id: 1024,
         username: "smile134",
-        email: "smile134@example.com"
+        email: "smile134@example.com",
       },
       {
         id: 1026,
         username: "redsocksfan#1",
-        email: "massusa@example.com"
-      }
+        email: "massusa@example.com",
+      },
     ]);
   });
 });
@@ -268,24 +270,24 @@ describe("find", () => {
       {
         id: 1024,
         username: "smile134",
-        email: "smile134@example.com"
+        email: "smile134@example.com",
       },
       {
         id: 1025,
         username: "newyorkfarmer",
-        email: "johndoe@example.com"
+        email: "johndoe@example.com",
       },
       {
         id: 1026,
         username: "redsocksfan#1",
-        email: "massusa@example.com"
-      }
+        email: "massusa@example.com",
+      },
     ];
     const user = findUser(users, 1025);
     expect(user).to.deep.equal({
       id: 1025,
       username: "newyorkfarmer",
-      email: "johndoe@example.com"
+      email: "johndoe@example.com",
     });
   });
 });
@@ -298,7 +300,11 @@ describe("testing the functionality  of Reduce", () => {
     expect(negativeTotal).to.equal(0);
   });
   it("flattenArray should return a flattened array", () => {
-    const flat = flattenArray([[1, 2, 3], [4, 5, 6], [7, 8, 9]]);
+    const flat = flattenArray([
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9],
+    ]);
     expect(flat).to.be.equalTo([1, 2, 3, 4, 5, 6, 7, 8, 9]);
   });
   it("generateTally should return a tally using the object data structure ", () => {
@@ -309,14 +315,14 @@ describe("testing the functionality  of Reduce", () => {
       "es5",
       "react",
       "angular",
-      "vue"
+      "vue",
     ]);
     expect(tally).to.deep.equal({
       es6: 3,
       es5: 1,
       react: 1,
       angular: 1,
-      vue: 1
+      vue: 1,
     });
   });
   it("arrayToObject should transform and array of objects to accessible via id", () => {
@@ -325,14 +331,14 @@ describe("testing the functionality  of Reduce", () => {
       { id: 456, name: "chris", age: 23 },
       { id: 789, name: "bob", age: 23 },
       { id: 101, name: "tom", age: 23 },
-      { id: 102, name: "tim", age: 23 }
+      { id: 102, name: "tim", age: 23 },
     ];
     const peopleObject = {
       123: { id: 123, name: "dave", age: 23 },
       456: { id: 456, name: "chris", age: 23 },
       789: { id: 789, name: "bob", age: 23 },
       101: { id: 101, name: "tom", age: 23 },
-      102: { id: 102, name: "tim", age: 23 }
+      102: { id: 102, name: "tim", age: 23 },
     };
     const arrOfObj = arrayToObject(peopleArray);
     expect(arrOfObj).to.deep.equal(peopleObject);

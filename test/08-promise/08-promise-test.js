@@ -8,7 +8,7 @@ describe("Promise", () => {
       const promise = getBooksApi();
       expect(promise).to.be.an.instanceOf(Promise);
       promise
-        .then(response => {
+        .then((response) => {
           expect(response).to.be.an("object");
           expect(response).to.deep.equal({
             category: "books",
@@ -19,23 +19,23 @@ describe("Promise", () => {
                 title: "Berlin",
                 authors: ["Jason Lutes"],
                 image:
-                  "https://images-na.ssl-images-amazon.com/images/I/51DhbDeVIVL._SX388_BO1,204,203,200_.jpg"
+                  "https://images-na.ssl-images-amazon.com/images/I/51DhbDeVIVL._SX388_BO1,204,203,200_.jpg",
               },
               {
                 id: "cb195709",
                 title: "Hey, Kiddo",
                 authors: ["Jarrett J. Krosoczka"],
                 image:
-                  "https://images-na.ssl-images-amazon.com/images/I/517I7YRvHBL._SX351_BO1,204,203,200_.jpg"
+                  "https://images-na.ssl-images-amazon.com/images/I/517I7YRvHBL._SX351_BO1,204,203,200_.jpg",
               },
               {
                 id: "77ae31c1",
                 title: "On a Sunbeam",
                 authors: ["Tillie Walden"],
                 image:
-                  "https://images-na.ssl-images-amazon.com/images/I/51Ukxxbo-mL._SX359_BO1,204,203,200_.jpg"
-              }
-            ]
+                  "https://images-na.ssl-images-amazon.com/images/I/51Ukxxbo-mL._SX359_BO1,204,203,200_.jpg",
+              },
+            ],
           });
         })
         .catch(() => {
@@ -45,7 +45,7 @@ describe("Promise", () => {
   });
   describe("data", () => {
     let testNum = 0;
-    beforeEach(done => {
+    beforeEach((done) => {
       testNum++;
       if (testNum > 1) {
         setTimeout(() => {
@@ -63,22 +63,22 @@ describe("Promise", () => {
           title: "Berlin",
           authors: ["Jason Lutes"],
           image:
-            "https://images-na.ssl-images-amazon.com/images/I/51DhbDeVIVL._SX388_BO1,204,203,200_.jpg"
+            "https://images-na.ssl-images-amazon.com/images/I/51DhbDeVIVL._SX388_BO1,204,203,200_.jpg",
         },
         {
           id: "cb195709",
           title: "Hey, Kiddo",
           authors: ["Jarrett J. Krosoczka"],
           image:
-            "https://images-na.ssl-images-amazon.com/images/I/517I7YRvHBL._SX351_BO1,204,203,200_.jpg"
+            "https://images-na.ssl-images-amazon.com/images/I/517I7YRvHBL._SX351_BO1,204,203,200_.jpg",
         },
         {
           id: "77ae31c1",
           title: "On a Sunbeam",
           authors: ["Tillie Walden"],
           image:
-            "https://images-na.ssl-images-amazon.com/images/I/51Ukxxbo-mL._SX359_BO1,204,203,200_.jpg"
-        }
+            "https://images-na.ssl-images-amazon.com/images/I/51Ukxxbo-mL._SX359_BO1,204,203,200_.jpg",
+        },
       ]);
     });
   });

@@ -12,7 +12,15 @@
  *
  *  */
 
-function createAnArray() {}
+function createAnArray() {
+  [
+    "Albany",
+    function (a, b) {
+      a + b;
+    },
+    [1, 2, 3, 4, 5],
+  ];
+}
 
 /***
  *   The function will accept two arguments: the string and the target.
@@ -32,9 +40,16 @@ function createAnArray() {}
  *
  *  */
 
-function uppercaseTargetWord(str, target) {}
+function uppercaseTargetWord(str, target) {
+  let stepOne = str.split(" ");
+  let stepTwo = stepOne[target - 1];
+  let stepThree = stepTwo.toUppercase();
+  let stepFour = stepOne.replace(target - 1, stepThree);
+  let stepFive = stepFour.join(" ");
+  return stepFive;
+}
 
 module.exports = {
   createAnArray,
-  uppercaseTargetWord
+  uppercaseTargetWord,
 };
