@@ -127,12 +127,12 @@ const guessingGame = (numberOfRounds) => {
   const guessRound = (x) => {
     while (guesses !== numberOfRounds) {
       guesses++;
-      if ((x = answer)) {
-        return "You got it!";
-      } else if (x > answer) {
+      if (x > answer) {
         return "You're too high!";
-      } else {
+      } else if (x < answer) {
         return "You're too low!";
+      } else {
+        return "You got it!";
       }
     }
     if ((guesses = numberOfRounds)) {
@@ -163,9 +163,13 @@ const guessingGame = (numberOfRounds) => {
  * @param {number} b
  */
 const multiplier = (a, b) => {
-  return (b) => {
+  if (a && b) {
     return a * b;
-  };
+  } else {
+    return (b) => {
+      return a * b;
+    };
+  }
 };
 
 /** Currying End */
@@ -193,7 +197,7 @@ const printer = (name) => {
  * @param {array}
  * @param {function} callback printer function
  */
-const printNames = () => {
+const printNames = (array, printer) => {
   let i;
   for (i = 0; i < array.length; i++) {
     printer(i);
@@ -213,7 +217,9 @@ const printNames = () => {
  * @param {function} callback
  */
 const forEach = (arr, callback) => {
-  arr.forEach((element) => console.log(element));
+  for (let i = 0; i < arr.length; i++) {
+    callback(arr[i], index, arr);
+  }
 };
 
 /**
@@ -242,9 +248,11 @@ const showFirstAndLast = (arr) => {
  * @returns {array} new array
  */
 const map = (arr, callback) => {
-  arr.map(function callback(x) {
-    x * 2;
-  });
+  const newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    newArr.push(callback(arr[i]));
+  }
+  return newArr;
 };
 
 /**
@@ -253,9 +261,10 @@ const map = (arr, callback) => {
  * @returns {array} new array, with each value doubled e.g. [2, 5, 10]
  */
 const doubleValues = (arr) => {
-  arr.map((x) => x * 2);
-};
+  const doubledValues = arr.map((x) => x * 2);
 
+  return doubledValues;
+};
 /**
  * Given an array nested with objects
  * and give the name of a shared key that is in all the nested objects,
@@ -275,11 +284,12 @@ const doubleValues = (arr) => {
  * extractKey(arrayOfNames, 'name'); // ['Ellie', 'Tim', 'Matt', 'Colt']
  */
 const extractKey = (arr, key) => {
-  let newArr = [];
-  newArr.push(arr.key);
-  return newArr;
+  newerArray = [];
+  for (let i = 0; i < arr.length; i++) {
+    arr.map(newerArray.push(arr[i][key])); //use map loop and brackets to make it work topic 2 slide 34
+  }
+  return newerArray;
 };
-
 /**
  * Build your own filter function
  * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
@@ -288,7 +298,11 @@ const extractKey = (arr, key) => {
  * @returns {mixed} a array of values with the values with some of the values removed
  */
 const filter = (arr, callback) => {
-  const results = arr.filter((word) => word.length > 5);
+  newestArray = [];
+  for (let i = 0; i < arr.length; i++) {
+    newestArray.push(callback(arr[i]));
+  }
+  return newestArray;
 };
 
 /**
@@ -311,7 +325,8 @@ const filter = (arr, callback) => {
  * // [{ id: 1024, username:"smile134", email: "smile134@example.com" }]
  */
 const deleteUser = (arr, id) => {
-  return arr.filter(id);
+  const filtArr = arr.filter((user) => user.id != id); //callback !id);
+  return filtArr;
 };
 
 /**
@@ -322,8 +337,14 @@ const deleteUser = (arr, id) => {
  * @returns {mixed} a single value in the array
  */
 const find = (arr, callback) => {
-  const found = arr.find((element) => element > 10);
-  callback(found);
+  newArr1 = [];
+  for (let i = 0; i < arr.length; i++) {
+    if ((arr[i] = callback(arr[i]))) {
+      break;
+    }
+    newArr1.push(callback(arr[i]));
+  }
+  return newArr1;
 };
 
 /**
@@ -346,7 +367,7 @@ const find = (arr, callback) => {
  * // { id: 1025, username:"newyorkfarmer", email: "johndoe@example.com" }
  */
 const findUser = (arr, id) => {
-  return arr.find((element) => element === id);
+  return arr.find((element) => element.id === id);
 };
 
 /**
@@ -358,7 +379,7 @@ const findUser = (arr, id) => {
  *  addItems([1,-2,-3]) // -4
  */
 const addItems = (arr) => {
-  arr.reduce((total, num) => {
+  return arr.reduce((total, num) => {
     return total + num;
   }, 0);
 };
@@ -368,7 +389,7 @@ const addItems = (arr) => {
  * @returns {array} new, flattened array e.g. `[1, 3, 5, 10]`
  */
 const flattenArray = (array) => {
-  array.reduce((total, amount) => {
+  return array.reduce((total, amount) => {
     return [...total, ...amount];
   }, []);
 };
@@ -382,7 +403,7 @@ const flattenArray = (array) => {
  *   generateTally(generateTally); // {Apple: 2, Orange: 1, Blueberry: 1, Grape: 2}
  */
 const generateTally = (array) => {
-  array.reduce((acc, fruit) => {
+  return array.reduce((acc, fruit) => {
     acc[fruit] = acc[fruit] ? acc[fruit] + 1 : 1;
     return acc;
   }, {});

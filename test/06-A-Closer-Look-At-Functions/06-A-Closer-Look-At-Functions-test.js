@@ -100,7 +100,7 @@ describe("Closures", () => {
     });
   });
 
-  describe.only("guessingGame", () => {
+  describe("guessingGame", () => {
     it("should return a function", () => {
       const round = guessingGame(3);
       expect(round).to.be.a("function");
