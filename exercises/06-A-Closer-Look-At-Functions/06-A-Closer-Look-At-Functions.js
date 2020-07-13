@@ -218,7 +218,7 @@ const printNames = (array, printer) => {
  */
 const forEach = (arr, callback) => {
   for (let i = 0; i < arr.length; i++) {
-    callback(arr[i], index, arr);
+    callback(arr[i], i, arr);
   }
 };
 
@@ -250,7 +250,7 @@ const showFirstAndLast = (arr) => {
 const map = (arr, callback) => {
   const newArr = [];
   for (let i = 0; i < arr.length; i++) {
-    newArr.push(callback(arr[i]));
+    newArr.push(callback(arr[i], i, arr));
   }
   return newArr;
 };
@@ -284,11 +284,7 @@ const doubleValues = (arr) => {
  * extractKey(arrayOfNames, 'name'); // ['Ellie', 'Tim', 'Matt', 'Colt']
  */
 const extractKey = (arr, key) => {
-  newerArray = [];
-  for (let i = 0; i < arr.length; i++) {
-    arr.map(newerArray.push(arr[i][key])); //use map loop and brackets to make it work topic 2 slide 34
-  }
-  return newerArray;
+  return arr.map((element) => element[key]); //use map loop and brackets to make it work topic 2 slide 3
 };
 /**
  * Build your own filter function
@@ -300,7 +296,9 @@ const extractKey = (arr, key) => {
 const filter = (arr, callback) => {
   newestArray = [];
   for (let i = 0; i < arr.length; i++) {
-    newestArray.push(callback(arr[i]));
+    if (callback(arr[i], i, arr)) {
+      newestArray.push(arr[i]);
+    }
   }
   return newestArray;
 };
@@ -339,10 +337,10 @@ const deleteUser = (arr, id) => {
 const find = (arr, callback) => {
   newArr1 = [];
   for (let i = 0; i < arr.length; i++) {
-    if ((arr[i] = callback(arr[i]))) {
+    if (callback(arr[i], i, arr)) {
+      newArr1.push(callback(arr[i]));
       break;
     }
-    newArr1.push(callback(arr[i]));
   }
   return newArr1;
 };
@@ -431,7 +429,13 @@ const generateTally = (array) => {
  *   456: {id, 456, name: 'Rachel', age: 35}
  * }
  */
-const arrayToObject = (arr) => {};
+const arrayToObject = (arr) => {
+  const newObj = {};
+  for (let i = 0; i < arr.length; i++) {
+    newObj.ID = arr[i][ID] + ": " + arr[i];
+  }
+  return newObj;
+};
 
 module.exports = {
   objectMaker,

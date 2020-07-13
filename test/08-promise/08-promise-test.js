@@ -2,7 +2,7 @@ const { expect } = require("chai");
 global["window"] = { setTimeout };
 const { getBooksApi, getData } = require("../../exercises/08-promise/promise");
 
-describe("Promise", () => {
+describe.only("Promise", () => {
   describe("getBooksApi", () => {
     it("should be a promise that will resolve into the response that is in the instructions", () => {
       const promise = getBooksApi();

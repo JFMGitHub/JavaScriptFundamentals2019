@@ -15,3 +15,22 @@
  *
  * Use the AXIOS library to make AJAX requests.
  */
+const dropDown = document.querySelector("#dropdown");
+dropDown.addEventListener("input", (event) => {
+  axios.get("https://rickandmortyapi.com/api/character/").then((response) => {
+    for (let key in response) {
+      const option = document.createElement("option");
+      option.value = response.key;
+    } // I am trying to loop through every name in the object with all characters and add a name to the dropdown for each one
+  });
+});
+const imgChange = document.querySelector("#dropdown");
+imgChange.addEventListener("input", (event) => {
+  (charNumber) => {
+    axios
+      .get('https://rickandmortyapi.com/api/character/"' + charNumber + '"')
+      .then((data) => {
+        document.getElementById("main-img").src = data.results.image;
+      });
+  };
+});

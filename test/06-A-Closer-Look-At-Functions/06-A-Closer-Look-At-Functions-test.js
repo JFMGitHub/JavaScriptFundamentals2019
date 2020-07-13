@@ -188,6 +188,7 @@ describe("map", () => {
       suppliedArr = array;
       return number * 3;
     });
+    console.log(arrIndex);
     expect(tripledValues).to.be.equalTo([3, 6, 9]);
     expect(arrIndex).to.be.equalTo([0, 1, 2]);
     expect(suppliedArr).to.be.equalTo([1, 2, 3]);
@@ -212,6 +213,7 @@ describe("filter", () => {
     let idx = 0;
     const originalArray = [4, 18, 50, 33];
     const notDivisibleByTen = filter(originalArray, (number, index, array) => {
+      console.log(index);
       expect(index).to.equal(idx);
       expect(array).to.be.equalTo(originalArray);
       idx += 1;
@@ -258,6 +260,7 @@ describe("find", () => {
     let idx = 0;
     const originalArray = [4, 18, 50, 33];
     const divisibleByTen = find(originalArray, (number, index, array) => {
+      console.log(index);
       expect(index).to.equal(idx);
       expect(array).to.be.equalTo(originalArray);
       idx += 1;
