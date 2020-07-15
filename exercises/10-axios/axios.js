@@ -15,22 +15,48 @@
  *
  * Use the AXIOS library to make AJAX requests.
  */
-const dropDown = document.querySelector("#dropdown");
-dropDown.addEventListener("input", (event) => {
-  axios.get("https://rickandmortyapi.com/api/character/").then((response) => {
-    for (let key in response) {
-      const option = document.createElement("option");
-      option.value = response.key;
-    } // I am trying to loop through every name in the object with all characters and add a name to the dropdown for each one
+
+const characters = document.querySelector("#dropdown");
+//const option = document.createElement("option");
+var x = document.getElementById("dropdown");
+
+axios.get("https://rickandmortyapi.com/api/character/").then((response) => {
+  console.log(response);
+
+  for (let i = 0; i < response.data.results.length; i++) {
+    characters.options.add(new Option(response.data.results[i].name));
+  }
+
+  characters.addEventListener("click", (event) => {
+    document.getElementById("get-schwifty").src =
+      response.data.results[event].image;
   });
 });
+
+//var characters = document.createElement("option");
+
+//axios outside of event
+//const imgChange = document.querySelector("#dropdown");
+//imgChange.addEventListener("click", () => {axios.get("https://rickandmortyapi.com/api/character/").then((response) => {
+//document.getElementById("get-schwifty").src = response.data.results[click].image; //[click].image;
+//});
+
+//for (let name in response) {
+//const option = document.createElement("option");
+//option.value = response.results.name;
+//} // I am trying to loop through every name in the object with all characters and add a name to the dropdown for each one
+
 const imgChange = document.querySelector("#dropdown");
 imgChange.addEventListener("input", (event) => {
   (charNumber) => {
+    //possibly reference character number by id object.results.id so the name on dropdown pulls id # img
     axios
       .get('https://rickandmortyapi.com/api/character/"' + charNumber + '"')
       .then((data) => {
-        document.getElementById("main-img").src = data.results.image;
+        document.getElementById("get-schwifty").src =
+          "https://rickandmortyapi.com/api/character/avatar/361.jpeg";
       });
   };
 });
+//the firt step is to populate the dropdown on page load.
+//the second step is on change populate the image based on what the user has selected (line 47).
