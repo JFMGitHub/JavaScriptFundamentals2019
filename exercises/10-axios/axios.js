@@ -27,9 +27,10 @@ axios.get("https://rickandmortyapi.com/api/character/").then((response) => {
     characters.options.add(new Option(response.data.results[i].name));
   }
 
-  characters.addEventListener("click", (event) => {
+  characters.addEventListener("change", (event) => {
     document.getElementById("get-schwifty").src =
-      response.data.results[event].image;
+      response.data.results[x.selectedIndex - 1].image;
+    console.log(x.selectedIndex);
   });
 });
 

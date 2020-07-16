@@ -9,3 +9,12 @@
  * This is the API you will be using. The method will be GET.
  * https://ron-swanson-quotes.herokuapp.com/v2/quotes
  */
+const button = document.querySelector("#button");
+button.addEventListener("click", async function getData() {
+  await axios
+    .get("https://ron-swanson-quotes.herokuapp.com/v2/quotes")
+    .then((response) => {
+      console.log(response.data);
+      document.getElementById("quote").innerHTML = response.data;
+    });
+});
